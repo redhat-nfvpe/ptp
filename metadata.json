@@ -4,12 +4,18 @@
   "author": "zshi@redhat.com",
   "summary": "puppet module for linux precison time protocol",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/zshi-redhat/ptp.git",
+  "project_page": "https://github.com/zshi-redhat/ptp.git",
+  "issues_url": "https://github.com/zshi-redhat/ptp/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],
-  "data_provider": "hiera"
+  "data_provider": "hiera",
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=4.5.0 <5.0.0"
+    }
+  ],
+  "description": "PTP module."
 }
-
