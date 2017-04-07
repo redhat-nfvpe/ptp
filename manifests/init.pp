@@ -57,12 +57,12 @@ class ptp (
   String $ptp4l_interface,
   String $ptp4l_conffile,
   String $ptp4l_optfile,
-  Integer $ptp4l_conf_slaveOnly,
-  Integer $ptp4l_conf_logAnnounceInterval,
-  Integer $ptp4l_conf_logSyncInterval,
-  Integer $ptp4l_conf_logMinDelayReqInterval,
-  Integer $ptp4l_conf_logMinPdelayReqInterval,
-  String $ptp4l_conf_clock_servo,
+  Optional[Integer] $ptp4l_conf_slaveOnly,
+  Optional[Integer] $ptp4l_conf_logAnnounceInterval,
+  Optional[Integer] $ptp4l_conf_logSyncInterval,
+  Optional[Integer] $ptp4l_conf_logMinDelayReqInterval,
+  Optional[Integer] $ptp4l_conf_logMinPdelayReqInterval,
+  Optional[String] $ptp4l_conf_clock_servo,
   String $ptp4l_conf_network_transport,
 ) {
 
