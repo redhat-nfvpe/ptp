@@ -7,8 +7,8 @@ class ptp::service inherits ptp {
       ensure     => $ptp::ptp4l_service_ensure,
       enable     => $ptp::ptp4l_service_enable,
       name       => $ptp::ptp4l_service_name,
-      hasstatus  => true
-      hasrestart => true
+      hasstatus  => true,
+      hasrestart => true,
     }
   }
 
@@ -17,8 +17,8 @@ class ptp::service inherits ptp {
       ensure     => $ptp::phc2sys_service_ensure,
       enable     => $ptp::phc2sys_service_enable,
       name       => $ptp::phc2sys_service_name,
-      hasstatus  => true
-      hasrestart => true
+      hasstatus  => true,
+      hasrestart => true,
     }
   }
 

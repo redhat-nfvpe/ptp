@@ -43,13 +43,17 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class ptp (
-  Boolean $ptp4l_service_enable,
-  Boolean $phc2sys_service_enable,
-  String $ptp4l_service_ensure,
-  String $phc2sys_service_ensure,
+  Boolean $package_manage,
   String $package_name,
+  String $package_ensure,
   String $ptp4l_service_name,
+  String $ptp4l_service_ensure,
+  Boolean $ptp4l_service_enable,
+  Boolean $ptp4l_service_manage,
   String $phc2sys_service_name,
+  String $phc2sys_service_ensure,
+  Boolean $phc2sys_service_enable,
+  Boolean $phc2sys_service_manage,
   String $ptp4l_interface,
   String $ptp4l_conffile,
   String $ptp4l_optfile,
