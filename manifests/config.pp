@@ -10,4 +10,12 @@ class ptp::config inherits ptp {
     content => epp('ptp/ptp4l.epp'),
   }
 
+  file { $ptp::ptp4l_conffile:
+    ensure => file,
+    owner => 0,
+    group => 0,
+    mode => '0644',
+    content => epp('ptp/ptp4l.conf.epp'),
+  }
+
 }
