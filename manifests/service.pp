@@ -13,7 +13,7 @@ class ptp::service inherits ptp {
   }
 
   if $ptp::phc2sys_service_manage == true {
-    service { 'ptp4l':
+    service { 'phc2sys':
       ensure     => $ptp::phc2sys_service_ensure,
       enable     => $ptp::phc2sys_service_enable,
       name       => $ptp::phc2sys_service_name,

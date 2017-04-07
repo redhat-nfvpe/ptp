@@ -1,6 +1,6 @@
 # ptp4l: Managed by puppet.
 #
 
-OPTIONS="-f <%= $ptp::ptp4l_optfile -%> -i <%= $ptp::ptp4l_interface -%>"
+OPTIONS="-f <%= $ptp::ptp4l_conffile %> -i <%= $ptp::ptp4l_interface -%>"
 
 
