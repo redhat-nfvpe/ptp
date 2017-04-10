@@ -64,6 +64,7 @@ class ptp (
   Optional[String] $timemaster_phc2sys_options,
   Optional[String] $timemaster_chronyd_options,
   Optional[String] $timemaster_ntpd_options,
+  Optional[String] $timemaster_ptp4l_interface,
   String $ptp4l_interface,
   String $ptp4l_conffile,
   String $ptp4l_optfile,
