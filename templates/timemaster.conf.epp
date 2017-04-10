@@ -21,7 +21,7 @@ options <%= $ptp::timemaster_chronyd_options %>
 
 [ntpd]
 path /usr/sbin/ntpd
-optins <%= $ptp::timemaster_ntpd_options %>
+options <%= $ptp::timemaster_ntpd_options %>
 
 [phc2sys]
 path /usr/sbin/phcsys
