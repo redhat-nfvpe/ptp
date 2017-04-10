@@ -2,23 +2,34 @@
 
 class ptp::service inherits ptp {
     
-  if $ptp::ptp4l_service_manage == true {
-    service { 'ptp4l':
-      ensure     => $ptp::ptp4l_service_ensure,
-      enable     => $ptp::ptp4l_service_enable,
-      name       => $ptp::ptp4l_service_name,
+  if $ptp::timemaster_service_manage == true {
+    service { 'timemaster':
+      ensure     => $ptp::timemaster_service_ensure,
+      enable     => $ptp::timemaster_service_enable,
+      name       => $ptp::timemaster_service_name,
       hasstatus  => true,
       hasrestart => true,
     }
   }
+  else {
+    if $ptp::ptp4l_service_manage == true {
+      service { 'ptp4l':
+        ensure     => $ptp::ptp4l_service_ensure,
+        enable     => $ptp::ptp4l_service_enable,
+        name       => $ptp::ptp4l_service_name,
+        hasstatus  => true,
+        hasrestart => true,
+      }
+    }
 
-  if $ptp::phc2sys_service_manage == true {
-    service { 'phc2sys':
-      ensure     => $ptp::phc2sys_service_ensure,
-      enable     => $ptp::phc2sys_service_enable,
-      name       => $ptp::phc2sys_service_name,
-      hasstatus  => true,
-      hasrestart => true,
+    if $ptp::phc2sys_service_manage == true {
+      service { 'phc2sys':
+        ensure     => $ptp::phc2sys_service_ensure,
+        enable     => $ptp::phc2sys_service_enable,
+        name       => $ptp::phc2sys_service_name,
+        hasstatus  => true,
+        hasrestart => true,
+      }
     }
   }
 

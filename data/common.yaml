@@ -15,6 +15,17 @@ ptp::phc2sys_service_name: phc2sys
 ptp::phc2sys_service_ensure: running
 ptp::phc2sys_service_enable: true
 ptp::phc2sys_service_manage: true
+ptp::timemaster_service_name: timemaster
+ptp::timemaster_service_ensure: running
+ptp::timemaster_service_enable: true
+ptp::timemaster_service_manage: false
+ptp::timemaster_ntp_program: chronyd
+ptp::timemaster_conffile: '/etc/timemaster.conf'
+ptp::timemaster_ptp4l_options: ~
+ptp::timemaster_phc2sys_options: ~
+ptp::timemaster_chronyd_options: '-u chrony'
+ptp::timemaster_ntpd_options: '-u ntp:ntp -g'
+ptp::timemaster_ptp4l_interface: 'eth0'
 
 ptp::ptp4l_conf_slaveOnly: ~
 ptp::ptp4l_conf_logAnnounceInterval: ~

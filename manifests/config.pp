@@ -2,20 +2,35 @@
 
 class ptp::config inherits ptp {
 
-  file { $ptp::ptp4l_optfile:
-    ensure => file,
-    owner => 0,
-    group => 0,
-    mode => '0644',
-    content => epp('ptp/ptp4l.epp'),
-  }
+  if $ptp::timemaster_service_manage == true {
 
-  file { $ptp::ptp4l_conffile:
-    ensure => file,
-    owner => 0,
-    group => 0,
-    mode => '0644',
-    content => epp('ptp/ptp4l.conf.epp'),
+    file { $ptp::timemaster_conffile:
+      ensure => file,
+      owner => 0,
+      group => 0,
+      mode => '0644',
+      content => epp('ptp/timemaster.conf.epp')
+    }
+
+  }
+  else {
+
+    file { $ptp::ptp4l_optfile:
+      ensure => file,
+      owner => 0,
+      group => 0,
+      mode => '0644',
+      content => epp('ptp/ptp4l.epp'),
+    }
+
+    file { $ptp::ptp4l_conffile:
+      ensure => file,
+      owner => 0,
+      group => 0,
+      mode => '0644',
+      content => epp('ptp/ptp4l.conf.epp'),
+    }
+
   }
 
 }

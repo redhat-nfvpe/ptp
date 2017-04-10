@@ -1,0 +1,32 @@
+# Configuration file for timemaster: Managed by puppet.
+#
+
+[ptp_domain 0]
+interfaces <%= $ptp::timemaster_ptp4l_interface %>
+
+[timemaster]
+ntp_program <%= $ptp::timemaster_ntp_program %>
+
+[chrony.conf]
+include /etc/chrony.conf
+
+[ntp.conf]
+include /etc/ntp.conf
+
+[ptp4l.conf]
+
+[chronyd]
+path /usr/sbin/chronyd
+options <%= $ptp::timemaster_chronyd_options %>
+
+[ntpd]
+path /usr/sbin/ntpd
+optins <%= $ptp::timemaster_ntpd_options %>
+
+[phc2sys]
+path /usr/sbin/phcsys
+options <%= $ptp::timemaster_phc2sys_options %>
+
+[ptp4l]
+path /usr/sbin/ptp4l
+options <%= $ptp::timemaster_ptp4l_options %>
