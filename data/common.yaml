@@ -7,25 +7,16 @@ ptp::ptp4l_rundir: '/var/run/ptp4l'
 ptp::ptp4l_optfile: '/etc/sysconfig/ptp4l'
 ptp::ptp4l_interface: 'eth0'
 ptp::logdir: '/var/log/linuxptp'
+
 ptp::ptp4l_service_name: ptp4l
 ptp::ptp4l_service_ensure: running
 ptp::ptp4l_service_enable: true
 ptp::ptp4l_service_manage: true
+
 ptp::phc2sys_service_name: phc2sys
 ptp::phc2sys_service_ensure: running
 ptp::phc2sys_service_enable: true
 ptp::phc2sys_service_manage: true
-ptp::timemaster_service_name: timemaster
-ptp::timemaster_service_ensure: running
-ptp::timemaster_service_enable: true
-ptp::timemaster_service_manage: false
-ptp::timemaster_ntp_program: chronyd
-ptp::timemaster_conffile: '/etc/timemaster.conf'
-ptp::timemaster_ptp4l_options: ~
-ptp::timemaster_phc2sys_options: ~
-ptp::timemaster_chronyd_options: '-u chrony'
-ptp::timemaster_ntpd_options: '-u ntp:ntp -g'
-ptp::timemaster_ptp4l_interface: 'eth0'
 
 ptp::ptp4l_conf_slaveOnly: 0
 ptp::ptp4l_conf_logAnnounceInterval: 1
@@ -34,3 +25,18 @@ ptp::ptp4l_conf_logMinDelayReqInterval: 0
 ptp::ptp4l_conf_logMinPdelayReqInterval: 0
 ptp::ptp4l_conf_clock_servo: 'pi'
 ptp::ptp4l_conf_network_transport: 'UDPv4'
+
+ptp::timemaster_service_name: timemaster
+ptp::timemaster_service_ensure: running
+ptp::timemaster_service_enable: true
+ptp::timemaster_service_manage: false
+ptp::timemaster_conffile: '/etc/timemaster.conf'
+ptp::timemaster_ntp_program: chronyd
+ptp::timemaster_chronyd_options: '-u chrony'
+ptp::timemaster_ntp_server: 'pool.ntp.org'
+ptp::timemaster_ntp_server_minpoll: 4
+ptp::timemaster_ntp_server_maxpoll: 4
+ptp::timemaster_ntpd_options: '-u ntp:ntp -g'
+ptp::timemaster_ptp4l_interface: 'eth0'
+ptp::timemaster_ptp4l_options: ~
+ptp::timemaster_phc2sys_options: ~

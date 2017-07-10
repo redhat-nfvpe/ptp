@@ -1,6 +1,10 @@
 # Configuration file for timemaster: Managed by puppet.
 #
 
+[ntp_server <%= %ptp::timemaster_ntp_server %>]
+minpoll <%= $ptp::timemaster_ntp_server_minpoll %>
+maxpoll <%= $ptp::timemaster_ntp_server_maxpoll %>
+
 [ptp_domain 0]
 interfaces <%= $ptp::timemaster_ptp4l_interface %>
 
