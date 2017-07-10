@@ -2,5 +2,3 @@
 #
 
 OPTIONS="-f <%= $ptp::ptp4l_conffile %> -i <%= $ptp::ptp4l_interface -%>"
-
-

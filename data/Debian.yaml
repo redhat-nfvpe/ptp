@@ -1,0 +1,3 @@
+ptp::ptp4l_conffile: '/etc/linuxptp/ptp4l.conf'
+ptp::timemaster_conffile: '/etc/linuxptp/timemaster.conf'
+ptp::timemaster_ntp_server: '0.debian.pool.ntp.org'
