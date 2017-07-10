@@ -27,10 +27,10 @@ ptp::timemaster_chronyd_options: '-u chrony'
 ptp::timemaster_ntpd_options: '-u ntp:ntp -g'
 ptp::timemaster_ptp4l_interface: 'eth0'
 
-ptp::ptp4l_conf_slaveOnly: ~
-ptp::ptp4l_conf_logAnnounceInterval: ~
-ptp::ptp4l_conf_logSyncInterval: ~
-ptp::ptp4l_conf_logMinDelayReqInterval: ~
-ptp::ptp4l_conf_logMinPdelayReqInterval: ~
-ptp::ptp4l_conf_clock_servo: ~
+ptp::ptp4l_conf_slaveOnly: 0
+ptp::ptp4l_conf_logAnnounceInterval: 1
+ptp::ptp4l_conf_logSyncInterval: 0
+ptp::ptp4l_conf_logMinDelayReqInterval: 0
+ptp::ptp4l_conf_logMinPdelayReqInterval: 0
+ptp::ptp4l_conf_clock_servo: 'pi'
 ptp::ptp4l_conf_network_transport: 'UDPv4'
