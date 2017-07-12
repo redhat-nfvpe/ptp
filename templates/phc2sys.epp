@@ -1,0 +1,4 @@
+# phc2sys: Managed by puppet.
+#
+
+OPTIONS="<%= $ptp::phc2sys_options -%>"

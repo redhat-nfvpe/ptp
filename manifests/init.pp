@@ -68,6 +68,9 @@ class ptp (
   String $ptp4l_conf_clock_servo,
   String $ptp4l_conf_network_transport,
 
+  String $phc2sys_optfile,
+  String $phc2sys_options,
+
   String $timemaster_service_name,
   String $timemaster_service_ensure,
   Boolean $timemaster_service_enable,

@@ -31,6 +31,14 @@ class ptp::config inherits ptp {
       content => epp('ptp/ptp4l.conf.epp'),
     }
 
+    file { $ptp::phc2sys_optfile:
+      ensure => file,
+      owner => 0,
+      group => 0,
+      mode => '0644',
+      content => epp('ptp/phc2sys.epp'),
+    }
+
   }
 
 }
