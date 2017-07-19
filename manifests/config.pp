@@ -15,20 +15,22 @@ class ptp::config inherits ptp {
   }
   else {
 
-    file { $ptp::ptp4l_optfile:
+    file { "ptp4l-${ptp::ptp4l_interface}.conf":
       ensure => file,
       owner => 0,
       group => 0,
       mode => '0644',
-      content => epp('ptp/ptp4l.epp'),
+      path => $ptp::ptp4l_confpath
+      content => epp('ptp/ptp4l.conf.epp'),
     }
 
-    file { $ptp::ptp4l_conffile:
+    file { "ptp4l@.service":
       ensure => file,
       owner => 0,
       group => 0,
       mode => '0644',
-      content => epp('ptp/ptp4l.conf.epp'),
+      path => $ptp::ptp4l_service_confpath
+      content => epp('ptp/ptp4l.service.epp'),
     }
 
     file { $ptp::phc2sys_optfile:

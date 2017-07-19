@@ -28,7 +28,7 @@ class ptp::service inherits ptp {
       service { 'ptp4l':
         ensure     => $ptp::ptp4l_service_ensure,
         enable     => $ptp::ptp4l_service_enable,
-        name       => $ptp::ptp4l_service_name,
+        name       => "ptp4l@${ptp::ptp4l_interface}",
         hasstatus  => true,
         hasrestart => true,
       }

@@ -2,13 +2,12 @@
 ptp::package_name: 'linuxptp'
 ptp::package_manage: true
 ptp::package_ensure: present
-ptp::ptp4l_conffile: '/etc/ptp4l.conf'
+ptp::ptp4l_confpath: '/etc'
+ptp::ptp4l_service_confpath: '/usr/lib/systemd/system/'
 ptp::ptp4l_rundir: '/var/run/ptp4l'
-ptp::ptp4l_optfile: '/etc/sysconfig/ptp4l'
 ptp::ptp4l_interface: 'eth0'
 ptp::logdir: '/var/log/linuxptp'
 
-ptp::ptp4l_service_name: ptp4l
 ptp::ptp4l_service_ensure: running
 ptp::ptp4l_service_enable: true
 ptp::ptp4l_service_manage: true

@@ -1,0 +1,12 @@
+# ptp4l: Managed by puppet.
+#
+
+[Unit]
+Description=Precision Time Protocol (PTP) service on %i interface
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/ptp4l -f /etc/ptp4l-%i.conf -i %i
+
+[Install]
+WantedBy=multi-user.target
