@@ -47,10 +47,9 @@ class ptp (
   String $package_name,
   String $package_ensure,
   String $ptp4l_interface,
-  String $ptp4l_conffile,
-  String $ptp4l_optfile,
+  String $ptp4l_confpath,
+  String $ptp4l_service_confpath,
 
-  String $ptp4l_service_name,
   String $ptp4l_service_ensure,
   Boolean $ptp4l_service_enable,
   Boolean $ptp4l_service_manage,
