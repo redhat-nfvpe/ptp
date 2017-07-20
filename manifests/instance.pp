@@ -23,6 +23,5 @@ define ptp::instance (
 
    Class['::ptp::install'] -> Ptp::Instance[$title]
    Class['::ptp::config']  -> Ptp::Instance[$title]
-   Ptp::Instance_service[$title] -> Class['::ptp::service']
 
 }
