@@ -46,7 +46,6 @@ class ptp (
   Boolean $package_manage,
   String $package_name,
   String $package_ensure,
-  String $ptp4l_interface,
   String $ptp4l_confpath,
   String $ptp4l_service_confpath,
 
@@ -58,14 +57,6 @@ class ptp (
   String $phc2sys_service_ensure,
   Boolean $phc2sys_service_enable,
   Boolean $phc2sys_service_manage,
-
-  Integer $ptp4l_conf_slaveOnly,
-  Integer $ptp4l_conf_logAnnounceInterval,
-  Integer $ptp4l_conf_logSyncInterval,
-  Integer $ptp4l_conf_logMinDelayReqInterval,
-  Integer $ptp4l_conf_logMinPdelayReqInterval,
-  String $ptp4l_conf_clock_servo,
-  String $ptp4l_conf_network_transport,
 
   String $phc2sys_optfile,
   String $phc2sys_options,
