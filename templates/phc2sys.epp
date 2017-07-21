@@ -1,4 +1,4 @@
 # phc2sys: Managed by puppet.
 #
 
-OPTIONS="<%= $ptp::phc2sys_options -%>"
+OPTIONS="<% if @phc2sys_slave -%> -c <%= @phc2sys_slave -%> <% end -%> <% if @phc2sys_master -%> -s <%= @phc2sys_master -%> <% end -%> -w -m"

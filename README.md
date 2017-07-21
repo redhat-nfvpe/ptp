@@ -37,7 +37,7 @@ A simple puppet code below is enough to enable & start ptp4l service on
 selected ptp capable NIC `eth0`:
 
 ```puppet
-ptp::instance { 'instance_name':
+ptp::instance_ptp4l { 'instance_name':
   ptp4l_interface => 'eth0',
 }
 ```
@@ -47,7 +47,7 @@ ptp::instance { 'instance_name':
 ### Install and Enable one ptp instance
 
 ```puppet
-ptp::instance { 'instance_name':
+ptp::instance_ptp4l { 'ptp4l_instance0':
   ptp4l_interface => 'eth0',
 }
 ```
@@ -55,11 +55,11 @@ ptp::instance { 'instance_name':
 ### Install and Enable two ptp instances
 
 ```puppet
-ptp::instance { 'ptp_instance1':
+ptp::instance_ptp4l { 'ptp4l_instance1':
   ptp4l_interface => 'eth1',
 }
 
-ptp::instance { 'ptp_instance2':
+ptp::instance_ptp4l { 'ptp4l_instance2':
   ptp4l_interface => 'eth2',
 }
 ```
@@ -67,7 +67,7 @@ ptp::instance { 'ptp_instance2':
 ### Configure ptp in slave mode
 
 ```puppet
-ptp::instance { 'ptp_instance3':
+ptp::instance_ptp4l { 'ptp4l_instance3':
   ptp4l_interface      => 'eth0',
   ptp4l_conf_slaveOnly => 1,
 }
@@ -76,12 +76,68 @@ ptp::instance { 'ptp_instance3':
 ### Configure ptp in slave mode and use L2 message transport
 
 ```puppet
-ptp::instance { 'ptp_instance4':
+ptp::instance_ptp4l { 'ptp4l_instance4':
   ptp4l_interface              => 'eth0',
   ptp4l_conf_slaveOnly         => 1,
   ptp4l_conf_network_transport => 'L2'
 }
 ```
+
+### Configure ptp & phc2sys instances
+
+Configure ptp instance in slave mode, sync eth0 to remote master or boundary clock;
+Configure phc2sys to sync system clock to eth0 PHC clock.
+
+```puppet
+ptp::instance_ptp4l { 'ptp4l_instance0':
+  ptp4l_interface              => 'eth0',
+  ptp4l_conf_slaveOnly         => 1,
+  ptp4l_conf_network_transport => 'UDPv4'
+}
+
+ptp::instance_phc2sys { 'phc2sys_instance0':
+  phc2sys_slave              => 'CLOCK_REALTIME',
+  phc2sys_master             => 'eth0',
+}
+```
+
+### Configure Boundary Clock
+
+Configure one ptp instance in slave mode, sync eth0 to remote master or boundary clock;
+Configure second ptp instance in master mode, sync eth1 to eth0;
+Configure third ptp instance in master mode, sync eth2 to eth0;
+
+```puppet
+ptp::instance_ptp4l { 'ptp4l_instance0':
+  ptp4l_interface              => 'eth0',
+  ptp4l_conf_slaveOnly         => 1,
+}
+
+ptp::instance_ptp4l { 'ptp4l_instance1':
+  ptp4l_interface              => 'eth1',
+  ptp4l_conf_slaveOnly         => 0,
+}
+
+ptp::instance_ptp4l { 'ptp4l_instance2':
+  ptp4l_interface              => 'eth2',
+  ptp4l_conf_slaveOnly         => 0,
+}
+
+ptp::instance_phc2sys { 'phc2sys_instance0':
+  phc2sys_slave              => 'eth1',
+  phc2sys_master             => 'eth0',
+}
+
+ptp::instance_phc2sys { 'phc2sys_instance0':
+  phc2sys_slave              => 'eth2',
+  phc2sys_master             => 'eth0',
+}
+```
+
+In this case, eth0 will act as a slave and sync its PHC clock to remote master;
+eth1 and eth2 will act as master in respective network where they connect.
+phc2sys instances are created to sync eth1 and eth2 to eth0 hardware clock.
+
 
 ## Reference
 
@@ -99,9 +155,8 @@ ptp::instance { 'ptp_instance4':
 
 #### Defined Type
 
-* ptp::instance: single or multiple ptp instance creation
-* ptp::instance_config: ptp instance configuration
-* ptp::instance_service: ptp instance service start/stop/enable/disable
+* ptp::instance_ptp4l: single or multiple ptp4l instance creation
+* ptp::instance_phc2sys: single or multiple phc2sys instance creation
 
 ### Parameters
 
@@ -114,15 +169,17 @@ The following parameters are available in the `::ptp` class:
   String  $ptp4l_confpath
   String  $ptp4l_service_confpath
 
+  String  $ptp4l_default_service_name
   String  $ptp4l_service_ensure
   Boolean $ptp4l_service_enable
   Boolean $ptp4l_service_manage
 
-  String  $phc2sys_service_name
+  String  $phc2sys_default_service_name
   String  $phc2sys_service_ensure
   Boolean $phc2sys_service_enable
   Boolean $phc2sys_service_manage
 
+  String  $phc2sys_opt_confpath
   String  $phc2sys_optfile
   String  $phc2sys_options
 
@@ -143,7 +200,7 @@ The following parameters are available in the `::ptp` class:
   Optional[String] $timemaster_phc2sys_options
 ```
 
-The following parameters are available in the `::ptp::instance` defined type:
+The following parameters are available in the `ptp::instance_ptp4l` defined type:
 
 ```puppet
   String  $ptp4l_interface
@@ -154,6 +211,13 @@ The following parameters are available in the `::ptp::instance` defined type:
   Integer $ptp4l_conf_logMinPdelayReqInterval
   String  $ptp4l_conf_clock_servo
   String  $ptp4l_conf_network_transport
+```
+
+The following parameters are available in the `ptp::instance_phc2sys` defined type:
+
+```puppet
+  String $phc2sys_slave
+  String $phc2sys_master
 ```
 
 ## Limitations

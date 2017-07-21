@@ -24,12 +24,13 @@ class ptp::config inherits ptp {
       content => epp('ptp/ptp4l.service.epp'),
     }
 
-    file { $ptp::phc2sys_optfile:
+    file { "phc2sys@.service":
       ensure => file,
       owner => 0,
       group => 0,
       mode => '0644',
-      content => epp('ptp/phc2sys.epp'),
+      path => "${ptp::phc2sys_service_confpath}/phc2sys@.service",
+      content => epp('ptp/phc2sys.service.epp'),
     }
 
   }
