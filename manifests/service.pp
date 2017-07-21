@@ -23,16 +23,5 @@ class ptp::service inherits ptp {
       hasrestart => true,
     }
   }
-  else {
-    if $ptp::phc2sys_service_manage == true {
-      service { 'phc2sys':
-        ensure     => $ptp::phc2sys_service_ensure,
-        enable     => $ptp::phc2sys_service_enable,
-        name       => $ptp::phc2sys_default_service_name,
-        hasstatus  => true,
-        hasrestart => true,
-      }
-    }
-  }
 
 }
