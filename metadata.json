@@ -4,9 +4,9 @@
   "author": "zshi@redhat.com",
   "summary": "puppet module for linux precison time protocol",
   "license": "Apache-2.0",
-  "source": "https://github.com/zshi-redhat/ptp.git",
-  "project_page": "https://github.com/zshi-redhat/ptp.git",
-  "issues_url": "https://github.com/zshi-redhat/ptp/issues",
+  "source": "https://github.com/redhat-nfvpe/ptp",
+  "project_page": "https://github.com/redhat-nfvpe/ptp",
+  "issues_url": "https://github.com/redhat-nfvpe/ptp/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],
