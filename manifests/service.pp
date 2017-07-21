@@ -6,13 +6,13 @@ class ptp::service inherits ptp {
     service { 'ptp4l':
       ensure     => false,
       enable     => false,
-      name       => $ptp::ptp4l_service_name,
+      name       => $ptp::ptp4l_default_service_name,
       hasrestart => true,
     }
     service { 'phc2sys':
       ensure     => false,
       enable     => false,
-      name       => $ptp::phc2sys_service_name,
+      name       => $ptp::phc2sys_default_service_name,
       hasrestart => true,
     }
     service { 'timemaster':
@@ -28,7 +28,7 @@ class ptp::service inherits ptp {
       service { 'phc2sys':
         ensure     => $ptp::phc2sys_service_ensure,
         enable     => $ptp::phc2sys_service_enable,
-        name       => $ptp::phc2sys_service_name,
+        name       => $ptp::phc2sys_default_service_name,
         hasstatus  => true,
         hasrestart => true,
       }

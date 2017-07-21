@@ -49,16 +49,18 @@ class ptp (
   String $ptp4l_confpath,
   String $ptp4l_service_confpath,
 
+  String $ptp4l_default_service_name,
   String $ptp4l_service_ensure,
   Boolean $ptp4l_service_enable,
   Boolean $ptp4l_service_manage,
 
-  String $phc2sys_service_name,
+  String $phc2sys_default_service_name,
   String $phc2sys_service_ensure,
   Boolean $phc2sys_service_enable,
   Boolean $phc2sys_service_manage,
 
-  String $phc2sys_optfile,
+  String $phc2sys_opt_confpath,
+  String $phc2sys_service_confpath,
   String $phc2sys_options,
 
   String $timemaster_service_name,

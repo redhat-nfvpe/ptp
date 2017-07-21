@@ -7,16 +7,18 @@ ptp::ptp4l_service_confpath: '/usr/lib/systemd/system/'
 ptp::ptp4l_rundir: '/var/run/ptp4l'
 ptp::logdir: '/var/log/linuxptp'
 
+ptp::ptp4l_default_service_name: ptp4l
 ptp::ptp4l_service_ensure: running
 ptp::ptp4l_service_enable: true
 ptp::ptp4l_service_manage: true
 
-ptp::phc2sys_service_name: phc2sys
+ptp::phc2sys_default_service_name: phc2sys
 ptp::phc2sys_service_ensure: running
 ptp::phc2sys_service_enable: true
 ptp::phc2sys_service_manage: true
 
-ptp::phc2sys_optfile: '/etc/sysconfig/phc2sys'
+ptp::phc2sys_opt_confpath: '/etc/sysconfig/'
+ptp::phc2sys_service_confpath: '/usr/lib/systemd/system/'
 ptp::phc2sys_options: '-a -r'
 
 ptp::timemaster_service_name: timemaster

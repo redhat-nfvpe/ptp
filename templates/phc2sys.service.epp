@@ -1,0 +1,14 @@
+# phc2sys: Managed by puppet
+#
+
+[Unit]
+Description=Synchronize system clock or PTP hardware clock (PHC)
+After=ntpdate.service
+
+[Service]
+Type=simple
+EnvironmentFile=-<%= $ptp::phc2sys_opt_confpath -%>%i
+ExecStart=/usr/sbin/phc2sys $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
